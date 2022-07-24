@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_23_023501) do
+ActiveRecord::Schema.define(version: 2022_07_24_022235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "meal_plans", force: :cascade do |t|
+    t.string "monday"
+    t.string "tuesday"
+    t.string "wednesday"
+    t.string "thursday"
+    t.string "friday"
+    t.string "saturday"
+    t.string "sunday"
+    t.string "note"
+    t.string "tips"
+    t.bigint "nutritionist_id", null: false
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["nutritionist_id"], name: "index_meal_plans_on_nutritionist_id"
+    t.index ["patient_id"], name: "index_meal_plans_on_patient_id"
+  end
 
   create_table "nutritionists", force: :cascade do |t|
     t.string "firstName"
@@ -34,5 +52,7 @@ ActiveRecord::Schema.define(version: 2022_07_23_023501) do
     t.index ["nutritionists_id"], name: "index_patients_on_nutritionists_id"
   end
 
+  add_foreign_key "meal_plans", "nutritionists"
+  add_foreign_key "meal_plans", "patients"
   add_foreign_key "patients", "nutritionists", column: "nutritionists_id"
 end
