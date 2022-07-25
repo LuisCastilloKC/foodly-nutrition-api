@@ -15,4 +15,10 @@ class PatientsController < ApplicationController
         end
     end
 
+    private
+
+    def patient_params
+        params.require(:patient).permit(:firstname, :lastname, :nutritionist_id)
+    end
+
 end
