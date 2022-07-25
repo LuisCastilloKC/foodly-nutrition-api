@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_24_022235) do
+ActiveRecord::Schema.define(version: 2022_07_25_032622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2022_07_24_022235) do
   end
 
   create_table "nutritionists", force: :cascade do |t|
-    t.string "firstName"
-    t.string "lastName"
+    t.string "firstname"
+    t.string "lastname"
     t.string "username"
     t.string "email"
     t.string "password_digest"
@@ -44,15 +44,15 @@ ActiveRecord::Schema.define(version: 2022_07_24_022235) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "firstName"
-    t.string "lastName"
-    t.bigint "nutritionists_id", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.bigint "nutritionist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["nutritionists_id"], name: "index_patients_on_nutritionists_id"
+    t.index ["nutritionist_id"], name: "index_patients_on_nutritionist_id"
   end
 
   add_foreign_key "meal_plans", "nutritionists"
   add_foreign_key "meal_plans", "patients"
-  add_foreign_key "patients", "nutritionists", column: "nutritionists_id"
+  add_foreign_key "patients", "nutritionists"
 end
