@@ -1,12 +1,12 @@
 class MealPlansController < ApplicationController 
 
     def index
-        mealplans = MealPlans.all
+        mealplans = MealPlan.all
         render json: mealplans
     end
 
     def create
-        mealplan = MealPlans.create(mealplan_param)
+        mealplan = MealPlan.create(mealplan_param)
 
         if mealplan.save
             render json: mealplan, status: :created
