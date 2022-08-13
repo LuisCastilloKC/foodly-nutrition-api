@@ -15,4 +15,15 @@ class NutritionistsController < ApplicationController
             render: json: {errors: nutritionist.errors.full_messages}
         end
     end
+
+    def login
+        nutritionist = Nutritionist.find_by(username: params[:nutritionist][:username])
+        if nutritionist && nutritionist.authenticate(params[:nutritionist][:password])
+            payload = {nutritionist_id: nutritionist.id}
+            token = encode_token(payload)
+            render json: {nutritionist: nutritionist, token: token}
+        else
+            render json: {error: "Invalid username or password"}
+        end
+    end
 end
