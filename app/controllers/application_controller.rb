@@ -26,4 +26,8 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def logged_in?
+         !!current_nutritionist
+    end
+
 end
