@@ -19,5 +19,10 @@ class AuthController < ApplicationController
         end
     end
 
+    private
+
+    def nutritionist_login_params
+        params.require(:nutritionist).permit(:username, :password)
+    end
 
 end
