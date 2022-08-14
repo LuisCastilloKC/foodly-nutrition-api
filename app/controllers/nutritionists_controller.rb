@@ -30,4 +30,10 @@ class NutritionistsController < ApplicationController
     def auto_login
         render json: current_user
     end
+
+    private
+
+    def nutritionist_params
+        params.require(:nutritionist).permit(:username, :email, :password)
+    end
 end
