@@ -1,5 +1,7 @@
 class NutritionistsController < ApplicationController
 
+    skip_before_action :authorized, except: [:auto_login]
+
     def index
         nutritionist = Nutritionist.all
         render json: nutritionist
