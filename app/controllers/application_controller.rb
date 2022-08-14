@@ -30,4 +30,8 @@ class ApplicationController < ActionController::API
          !!current_nutritionist
     end
 
+    def authorized
+        render json: { message: ' Please login or signup'}, status: :unauthorized unless logged_in?
+    end
+
 end
