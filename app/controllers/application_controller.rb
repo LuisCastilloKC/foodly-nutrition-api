@@ -18,5 +18,12 @@ class ApplicationController < ActionController::API
             end
         end
     end
-    
+
+    def current_nutritionist
+        if decoded_token
+            nutritionist_id = decoded_token[0]['nutritionist_id']
+            nutritionist = Nutritionist.find_by(id: nutritionist_id)
+        end
+    end
+
 end
