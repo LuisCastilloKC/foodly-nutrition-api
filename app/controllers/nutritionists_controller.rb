@@ -14,7 +14,7 @@ class NutritionistsController < ApplicationController
             token = encode_token(payload)
             render json: {nutritionist: nutritionist, token: token}, status: :created
         else
-            render: json: {errors: nutritionist.errors.full_messages}
+            render json: {errors: nutritionist.errors.full_messages}
         end
     end
 
