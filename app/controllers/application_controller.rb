@@ -21,15 +21,15 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def current_nutritionist
+    def current_user
         if decoded_token
-            nutritionist_id = decoded_token[0]['nutritionist_id']
-            nutritionist = Nutritionist.find_by(id: nutritionist_id)
+            user_id = decoded_token[0]['user_id']
+            user = User.find_by(id: user_id)
         end
     end
 
     def logged_in?
-         !!current_nutritionist
+         !!current_user
     end
 
     def authorized

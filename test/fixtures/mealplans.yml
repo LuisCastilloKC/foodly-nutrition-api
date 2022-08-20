@@ -7,10 +7,9 @@ one:
   thursday: MyString
   friday: MyString
   saturday: MyString
-  sunday: MyString
   note: MyString
   tips: MyString
-  nutritionist: one
+  user: one
   patient: one
 
 two:
@@ -20,8 +19,7 @@ two:
   thursday: MyString
   friday: MyString
   saturday: MyString
-  sunday: MyString
   note: MyString
   tips: MyString
-  nutritionist: two
+  user: two
   patient: two

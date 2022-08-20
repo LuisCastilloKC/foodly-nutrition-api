@@ -10,49 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_25_032622) do
+ActiveRecord::Schema.define(version: 2022_08_20_030623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "meal_plans", force: :cascade do |t|
+  create_table "mealplans", force: :cascade do |t|
     t.string "monday"
     t.string "tuesday"
     t.string "wednesday"
     t.string "thursday"
     t.string "friday"
     t.string "saturday"
-    t.string "sunday"
     t.string "note"
     t.string "tips"
-    t.bigint "nutritionist_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["nutritionist_id"], name: "index_meal_plans_on_nutritionist_id"
-    t.index ["patient_id"], name: "index_meal_plans_on_patient_id"
+    t.index ["patient_id"], name: "index_mealplans_on_patient_id"
+    t.index ["user_id"], name: "index_mealplans_on_user_id"
   end
 
-  create_table "nutritionists", force: :cascade do |t|
+  create_table "patients", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
-    t.string "username"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_patients_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "patients", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.bigint "nutritionist_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["nutritionist_id"], name: "index_patients_on_nutritionist_id"
-  end
-
-  add_foreign_key "meal_plans", "nutritionists"
-  add_foreign_key "meal_plans", "patients"
-  add_foreign_key "patients", "nutritionists"
+  add_foreign_key "mealplans", "patients"
+  add_foreign_key "mealplans", "users"
+  add_foreign_key "patients", "users"
 end

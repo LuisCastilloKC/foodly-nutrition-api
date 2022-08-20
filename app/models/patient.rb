@@ -1,3 +1,3 @@
 class Patient < ApplicationRecord
-  belongs_to :nutritionist
+  belongs_to :user
 end

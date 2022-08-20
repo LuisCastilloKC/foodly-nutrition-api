@@ -3,9 +3,9 @@
 one:
   firstname: MyString
   lastname: MyString
-  nutritionist: one
+  user: one
 
 two:
   firstname: MyString
   lastname: MyString
-  nutritionist: two
+  user: two
