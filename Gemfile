@@ -19,6 +19,9 @@ gem 'puma', '~> 5.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# JWT gem
+gem "jwt", "~> 2.4"
+
 gem 'active_model_serializers'
 
 # Reduces boot times through caching; required in config/boot.rb
